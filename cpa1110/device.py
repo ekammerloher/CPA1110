@@ -51,11 +51,11 @@ class CPA1110:
         if connection_type == Connection.SERIAL:
             self.client = client.ModbusSerialClient(
                 port=resource_name,
-                framer=rtu_framer.sock,
+                framer=rtu_framer.ModbusRtuFramer,
                 stopbits=1,
                 bytesize=8,
-                parity="E",
-                baudrate=9600,
+                parity="N",
+                baudrate=115200,
             )
         elif connection_type == Connection.TCP:
             # verify IP address is in a valid format
