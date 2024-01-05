@@ -5,7 +5,24 @@ The Cryomech CPA1110 compressor supports remote monitoring through serial
 (RS232/485), as well as ethernet connections, through the Modbus RTU protocol
 (for serial) or ModbusTCP (for ethernet).
 
+## Install
+- clone this repo
+- make a new virtual environment
+- pip install -e CPA1110
+
 ## Example
+Serial example:
+```Python
+from cpa1110 import CPA1110, Connection
+
+compressor = CPA1110('/dev/tty.usbserial-ALDPt114J20',connection_type = Connection.SERIAL)
+
+# read the coolant in/out temperatures
+temp_in = compressor.CoolantInTemperature
+temp_out = compressor.CoolantOutTemperature
+```
+
+TCP example:
 ```Python
 from cpa1110 import CPA1110, Connection
 
